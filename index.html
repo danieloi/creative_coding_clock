@@ -45,7 +45,7 @@
             background(0);
             // clear()
             translate(width/2, height/2);
-            rotate(-90)
+            rotate(-90);
 
             let hr = hour();
             let mn = minute();
@@ -112,6 +112,15 @@
 			margin:auto;
             z-index: 1;
 		}
+
+		#switch {
+			position: relative;
+			display: inline-block;
+			width: 60px;
+			height: 34px;
+			z-index: 2;
+		}
+
 
         #switch input {display:none;}
 
