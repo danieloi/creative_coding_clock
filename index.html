@@ -15,6 +15,7 @@
         var central_X; //x-co-ordinate for canvas to be placed in the middle of the window
         var central_Y; //y-co-ordinate for canvas to be placed in the middle of the window
         var toggleButton;
+        var slider;
         var trigger;
 
         function setup() {
@@ -25,10 +26,11 @@
             angleMode(DEGREES);
 
             //Buttons!!!
-            toggleButton = createButton('TOGGLE HANDS');
+            toggleButton = select('#switch');
             toggleButton.position(central_X, central_Y);
-            toggleButton.mouseClicked(toggleHands);
-            trigger = 0;
+            slider = select('.slider');
+            slider.mouseClicked(toggleHands); //using clicked instead of pressed because of touch screens
+            trigger = 1;
         }
 
         function toggleHands() {
@@ -108,9 +110,55 @@
 		}
 		canvas {
 			margin:auto;
+            z-index: 1;
 		}
+
+        #switch input {display:none;}
+
+		.slider {
+			position: absolute;
+			cursor: pointer;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #ccc;
+			-webkit-transition: .1s;
+			transition: .1s;
+		}
+
+		.slider:before {
+			position: absolute;
+			content: "";
+			height: 26px;
+			width: 26px;
+			left: 4px;
+			bottom: 4px;
+			background-color: white;
+			-webkit-transition: .1s;
+			transition: .1s;
+		}
+
+		input:checked + .slider {
+			background-color: #547BFF;
+		}
+
+		input:focus + .slider {
+			box-shadow: 0 0 1px #547BFF;
+		}
+
+		input:checked + .slider:before {
+			-webkit-transform: translateX(26px);
+			-ms-transform: translateX(26px);
+			transform: translateX(26px);
+		}
+
 	</style>
 </head>
 <body>
+    <label id="switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+    </label>
 </body>
 </html>
