@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>no_74_clock</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script>
+    <script>
+        var canvas;
+        var central_X; //x-co-ordinate for canvas to be placed in the middle of the window
+        var central_Y; //y-co-ordinate for canvas to be placed in the middle of the window
+        var toggleButton;
+        var trigger;
+        var w, h;
+
+        function setup() {
+            if(innerWidth < 600) {
+                w, h = 400;
+            } else {
+                w, h = 600; 
+            }
+            canvas = createCanvas(w, h);
+            central_X = (innerWidth/2) - (width/2);
+            central_Y = (innerHeight/2) - (height/2);
+            canvas.position(central_X, central_Y);
+            angleMode(DEGREES);
+
+            //Buttons!!!
+            toggleButton = createButton('TOGGLE HANDS');
+            toggleButton.position(central_X, central_Y);
+            toggleButton.mousePressed(toggleHands);
+            trigger = 0;
+        }
+
+        function toggleHands() {
+            if(trigger == 1) {
+                trigger = 0;
+            } else {
+                trigger = 1;
+            }
+        }
+
+        function draw() {
+            background(0);
+            // clear()
+            translate(width/2, height/2);
+            rotate(-90)
+
+            let hr = hour();
+            let mn = minute();
+            let sc = second();
+
+            strokeWeight(8);
+            noFill();
+            stroke(255, 100, 150);
+            let secondAngle = map(sc, 0, 60, 0, 360);
+            arc(0, 0, 300, 300, 0, secondAngle);
+
+
+            stroke(150, 100, 255);
+            let minuteAngle = map(mn, 0, 60, 0, 360);
+            arc(0, 0, 280, 280, 0, minuteAngle);
+
+            stroke(150, 255, 100);
+            let hourAngle = map(hr % 12, 0, 12, 0, 360);
+            arc(0, 0, 260, 260, 0, hourAngle);
+
+
+            push();
+            rotate(secondAngle);
+            if(trigger == 1) {
+                noStroke();
+            } else {
+                stroke(255, 100, 150);
+            }
+            line(80, 0, 105, 0);
+            pop();
+
+
+            push();
+            rotate(minuteAngle);
+            if(trigger == 1) {
+                noStroke();
+            } else {
+                stroke(150, 100, 255);
+            }
+            line(0, 0, 75, 0);
+            pop();
+
+
+            push();
+            rotate(hourAngle);
+            if(trigger == 1) {
+                noStroke();
+            } else {
+                stroke(150, 255, 100);
+            }
+            line(0, 0, 50, 0);
+            pop();
+
+        }
+    </script>
+
+	<style>
+		body {
+			margin:0;
+			padding:0;
+			overflow: hidden;
+		}
+		canvas {
+			margin:auto;
+		}
+	</style>
+</head>
+<body>
+</body>
+</html>
