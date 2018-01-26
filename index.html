@@ -18,7 +18,7 @@
         var trigger;
 
         function setup() {
-            canvas = createCanvas(600, 600);
+            canvas = createCanvas(360, 360);
             central_X = (innerWidth/2) - (width/2);
             central_Y = (innerHeight/2) - (height/2);
             canvas.position(central_X, central_Y);
@@ -49,7 +49,7 @@
             let mn = minute();
             let sc = second();
 
-            strokeWeight(8);
+            strokeWeight(9);
             noFill();
             stroke(255, 100, 150);
             let secondAngle = map(sc, 0, 60, 0, 360);
