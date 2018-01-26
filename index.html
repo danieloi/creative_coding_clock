@@ -16,15 +16,9 @@
         var central_Y; //y-co-ordinate for canvas to be placed in the middle of the window
         var toggleButton;
         var trigger;
-        var w, h;
 
         function setup() {
-            if(innerWidth < 600) {
-                w, h = 400;
-            } else {
-                w, h = 600; 
-            }
-            canvas = createCanvas(w, h);
+            canvas = createCanvas(600, 600);
             central_X = (innerWidth/2) - (width/2);
             central_Y = (innerHeight/2) - (height/2);
             canvas.position(central_X, central_Y);
