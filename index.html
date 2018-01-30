@@ -9,7 +9,6 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script>
     <script>
         var canvas;
         var central_X; //x-co-ordinate for canvas to be placed in the middle of the window
@@ -19,7 +18,7 @@
         var trigger;
 
         function setup() {
-            canvas = createCanvas(360, 360);
+            canvas = createCanvas(300, 300);
             central_X = (innerWidth/2) - (width/2);
             central_Y = (innerHeight/2) - (height/2);
             canvas.position(central_X, central_Y);
@@ -55,16 +54,16 @@
             noFill();
             stroke(255, 100, 150);
             let secondAngle = map(sc, 0, 60, 0, 360);
-            arc(0, 0, 300, 300, 0, secondAngle);
+            arc(0, 0, 270, 270, 0, secondAngle);
 
 
             stroke(150, 100, 255);
             let minuteAngle = map(mn, 0, 60, 0, 360);
-            arc(0, 0, 280, 280, 0, minuteAngle);
+            arc(0, 0, 240, 240, 0, minuteAngle);
 
             stroke(150, 255, 100);
             let hourAngle = map(hr % 12, 0, 12, 0, 360);
-            arc(0, 0, 260, 260, 0, hourAngle);
+            arc(0, 0, 210, 210, 0, hourAngle);
 
 
             push();
@@ -120,7 +119,6 @@
 			height: 34px;
 			z-index: 2;
 		}
-
 
         #switch input {display:none;}
 
