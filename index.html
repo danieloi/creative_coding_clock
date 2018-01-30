@@ -50,7 +50,7 @@
             let mn = minute();
             let sc = second();
 
-            strokeWeight(9);
+            strokeWeight(15);
             noFill();
             stroke(255, 100, 150);
             let secondAngle = map(sc, 0, 60, 0, 360);
@@ -73,7 +73,8 @@
             } else {
                 stroke(255, 100, 150);
             }
-            line(80, 0, 105, 0);
+            strokeWeight(5);
+            line(65, 0, 90, 0);
             pop();
 
 
@@ -84,7 +85,8 @@
             } else {
                 stroke(150, 100, 255);
             }
-            line(0, 0, 75, 0);
+            strokeWeight(7);
+            line(0, 0, 55, 0);
             pop();
 
 
@@ -95,7 +97,8 @@
             } else {
                 stroke(150, 255, 100);
             }
-            line(0, 0, 50, 0);
+            strokeWeight(9);
+            line(0, 0, 40, 0);
             pop();
 
         }
